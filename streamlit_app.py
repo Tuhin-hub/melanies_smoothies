@@ -3,6 +3,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 
 
+import requests
 
 
 
@@ -44,6 +45,8 @@ if   Selected_fruite :
             for X in Selected_fruite :
                 if INGREDIENTS =='' :
                     INGREDIENTS=X
+                    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+X)
+                    st.dataframe(data=fruityvice_response.json(),use_container_width=True)
                 else :
                  INGREDIENTS=INGREDIENTS+' '+X
         
@@ -63,10 +66,7 @@ if INGREDIENTS :
 
 ORDERS=ss.table("SMOOTHIES.PUBLIC.ORDERS")##.select(col("NAME_ON_ORDER").getField()=NAME_ON_ORDER)
 
-import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
-st.dataframe(data=fruityvice_response.json(),use_container_width=True)
+
 
 st.dataframe(data=ORDERS,use_container_width=True)
 st.stop()
