@@ -45,11 +45,14 @@ if   Selected_fruite :
             for X in Selected_fruite :
                 if INGREDIENTS =='' :
                     INGREDIENTS=X
+                    aa="https://fruityvice.com/api/fruit/"+X
+                    aa 
                     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+X)
                     st.dataframe(data=fruityvice_response.json(),use_container_width=True)
                 else :
                  INGREDIENTS=INGREDIENTS+' '+X
-                 "https://fruityvice.com/api/fruit/"+X
+                 aa="https://fruityvice.com/api/fruit/"+X
+                 aa   
                  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+X)
                  st.dataframe(data=fruityvice_response.json(),use_container_width=True)
             st.write("selected items are :" ,INGREDIENTS)
