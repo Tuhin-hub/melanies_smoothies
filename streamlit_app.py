@@ -26,7 +26,7 @@ Selected_fruite=''
 if NAME_ON_ORDER != '' :
 
     FRUIT_NAME=ss.table("Smoothies.public.fruit_options").select(col("FRUIT_NAME"))
-    Selected_fruite=st.multiselect ("Select your fruite",FRUIT_NAME, max_selections=5) 
+    Selected_fruite=st.multiselect ("Select your fruite",FRUIT_NAME, max_selections=8) 
 
 ##ss.sql("truncate table  SMOOTHIES.PUBLIC.ORDERS;").collect()
 
