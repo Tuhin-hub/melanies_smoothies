@@ -1,9 +1,8 @@
 # Import python packages
 import streamlit as st
-##from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
-cnx=st.connection("snowflake")
+
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
@@ -18,7 +17,8 @@ NAME_ON_ORDER=st.text_input("Name of your smoothie will be :")
 if NAME_ON_ORDER:
         st.write("name of your smoothie!! :",NAME_ON_ORDER)
 
-ss=cnx.session()  ##get_active_session()
+cnx = st.connection("snowflake")
+ss = cnx.session()  
 Selected_fruite=''
 if NAME_ON_ORDER != '' :
 
