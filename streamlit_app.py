@@ -4,6 +4,8 @@ from snowflake.snowpark.functions import col
 
 
 
+
+
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write(
@@ -16,6 +18,25 @@ NAME_ON_ORDER=''
 NAME_ON_ORDER=st.text_input("Name of your smoothie will be :")
 if NAME_ON_ORDER:
         st.write("name of your smoothie!! :",NAME_ON_ORDER)
+
+
+# Securely access Snowflake credentials from environment variables
+user = os.environ.get("SNOWFLAKE_USER")
+password = os.environ.get("SNOWFLAKE_PASSWORD")
+account = os.environ.get("SNOWFLAKE_ACCOUNT")
+
+# Connect to Snowflake using secure credentials
+try:
+    cnx = snowflake.connector.connect(
+        user=user,
+        password=password,
+        account=account,
+        # Other connection parameters
+    )
+    ss = cnx.cursor()
+    # Use ss object for database interactions
+except Exception as e:
+    st.error(f"Connection failed: {e}")
 
 cnx = st.connection("snowflake")
 ss = cnx.session()  
