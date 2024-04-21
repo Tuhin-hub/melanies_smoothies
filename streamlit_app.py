@@ -49,7 +49,9 @@ if   Selected_fruite :
                     st.dataframe(data=fruityvice_response.json(),use_container_width=True)
                 else :
                  INGREDIENTS=INGREDIENTS+' '+X
-        
+                 "https://fruityvice.com/api/fruit/"+X
+                 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+X)
+                 st.dataframe(data=fruityvice_response.json(),use_container_width=True)
             st.write("selected items are :" ,INGREDIENTS)
     
 sql_insert=''
@@ -59,7 +61,7 @@ if INGREDIENTS :
                 values('"""+INGREDIENTS+"','"+NAME_ON_ORDER+"""'
                );"""
                 )
-    sql_insert
+    
     ss.sql(sql_insert).collect()       
     st.success("all smoothie is ordered "+NAME_ON_ORDER,icon="✅")
 
