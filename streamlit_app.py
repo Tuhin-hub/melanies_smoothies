@@ -61,7 +61,7 @@ sql_insert=''
 
 if INGREDIENTS :
     sql_insert=("""insert into SMOOTHIES.PUBLIC.ORDERS(INGREDIENTS,NAME_ON_ORDER)
-                values('"""+INGREDIENTS+"','"+NAME_ON_ORDER+"""'
+                values('"""+INGREDIENTS+" ','"+NAME_ON_ORDER+"""'
                );"""
                 )
     
